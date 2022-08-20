@@ -1,0 +1,28 @@
+{
+  "name": "simply-api",
+  "version": "1.0.0",
+  "description": "Package for simplyapi.js.org",
+  "typings": "index.d.ts",
+  "main": "main.js",
+  "scripts": {
+    "test": "node test/chatbot && node test/nsfw && node test/toxicity",
+    "dev": "npm publish --tag dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Abadima/simply-api.git"
+  },
+  "keywords": [
+    "simply",
+    "api",
+    "chatbot",
+    "nsfw",
+    "toxicity"
+  ],
+  "author": "Abadima",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Abadima/simply-api/issues"
+  },
+  "homepage": "https://github.com/Abadima/simply-api#readme"
+}
