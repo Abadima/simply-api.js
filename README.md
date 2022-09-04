@@ -2,7 +2,7 @@
 
 <div align="center">
   <a href="https://nodejs.org/en/download/">
-    <img src="https://img.shields.io/badge/Node.js-%2016.16-green.svg?style=for-the-badge&logo=Node.js" alt="Full-Package">
+    <img src="https://img.shields.io/badge/Node.js-%2016.17-green.svg?style=for-the-badge&logo=Node.js" alt="Full-Package">
   </a>
   <a href="https://discord.gg/3JzDV9T5Fn">
     <img src="https://img.shields.io/discord/867999056172052551.svg?label=Support&logo=Discord&colorB=7289da&style=for-the-badge" alt="Support Server">
@@ -12,13 +12,13 @@
   </a>
 </div>
 
-## <img alt="Download" width="28px" src="https://cdn.onlinewebfonts.com/svg/img_250767.png" /> Download Package 
+## <img alt="Download" width="28px" src="https://cdn.onlinewebfonts.com/svg/img_250767.png" /> Download Package
 ```
-npm install simply-api
-``` 
-(or) 
+npm install simply-api.js
 ```
-yarn add simply-api
+(or)
+```
+yarn add simply-api.js
 ```
 
 
@@ -27,6 +27,7 @@ yarn add simply-api
 |Endpoint| Description |
 |--|--|
 | chatbot(msg, {options}) | Chat with [Chat Bot](https://simplyapi.js.org/docs/chatbot) |
+| grammar(text) | Grammar/Spell Check |
 | nsfw(url) | Scan URLs for NSFW (PNG/JPG/GIF) |
 | toxicity(text) | Detect Toxic messages |
 
@@ -37,6 +38,12 @@ yarn add simply-api
 ```js
 var { chatbot } = require("simply-api")
 var data = await chatbot("Test Run by Simply-API.js", { uid: 69 })
+console.log(data) // returns JSON result
+```
+### Grammar
+```js
+var { grammar } = require("simply-api")
+var data = await grammar("hello how r u")
 console.log(data) // returns JSON result
 ```
 ### NSFW
@@ -63,6 +70,10 @@ var simplyapi = require("simply-api")
 simplyapi.chatbot("Hello!").then(data => {
 	console.log(data) // returns JSON result
 } // Chat Bot AI
+
+simplyapi.grammar("hello how r u").then(data => {
+	console.log(data) // returns JSON result
+} // Grammar Check
 
 simplyapi.nsfw(URL).then(data => {
 	console.log(data) // returns JSON result

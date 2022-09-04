@@ -2,7 +2,7 @@ var { toxicity } = require("../main")
 var start = Date.now()
 
 toxicity("*insert offensiveness here*").then(data => {
-    switch (data.status) {
+    switch (data?.status) {
         case 200: console.log(`TOXICITY => PASS (${Date.now() - start}ms)`); break
         case 404: console.log(`TOXICITY => TEXT IS NULL (${Date.now() - start}ms)`); break
         case 500: console.log(`TOXICITY => SERVER ERR (${Date.now() - start}ms)`); break

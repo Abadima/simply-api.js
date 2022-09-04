@@ -3,6 +3,7 @@ const { request } = require('https');
 var baseURI = 'simplyapi.js.org';
 var endURI = {
     chatbot: "/api/chatbot",
+    grammar: "/api/grammar",
     nsfw: "/api/nsfw",
     toxicity: "/api/toxicity"
 }
@@ -20,6 +21,15 @@ function chatbot(msg, options = []) {
     for (var key in options) {
         query += `&${encodeURI(key)}=${encodeURI(options[key])}`;
     }; return get(`${endURI.chatbot}?message=${encodeURI(msg) + query}`)
+}
+
+/**
+ * Grammar Checker
+ * @param {string} msg
+ * @returns {Promise<object>}
+ */
+function grammar(msg) {
+    return get(`${endURI.grammar}?text=${encodeURI(msg)}`)
 }
 
 /**
@@ -63,7 +73,8 @@ function get(endpoint) {
 }
 
 module.exports = {
-    nsfw,
     chatbot,
+    grammar,
+    nsfw,
     toxicity
 };

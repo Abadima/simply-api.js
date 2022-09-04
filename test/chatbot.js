@@ -2,7 +2,7 @@ var { chatbot } = require("../main")
 var start = Date.now()
 
 chatbot("Test Run by Simply-API.js", { uid: 69 }).then(data => {
-    switch (data.status) {
+    switch (data?.status) {
         case 200: console.log(`CHATBOT => PASS (${Date.now() - start}ms)`); break
         case 404: console.log(`CHATBOT => MSG IS NULL (${Date.now() - start}ms)`); break
         case 500: console.log(`CHATBOT => SERVER ERR (${Date.now() - start}ms)`); break

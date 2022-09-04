@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+        "forceConsistentCasingInFileNames": true,
+        "esModuleInterop": true,
+        "alwaysStrict": true,
+        "skipLibCheck": true,
+        "declaration": true,
+        "strict": true,
+        "module": "commonjs",
+        "target": "esnext",
+        "types": [
+            "node"
+        ]
+    }
+}
