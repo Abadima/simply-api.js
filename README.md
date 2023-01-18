@@ -8,21 +8,21 @@
     <img src="https://img.shields.io/discord/867999056172052551.svg?label=Support&logo=Discord&colorB=7289da&style=for-the-badge" alt="Support Server">
   </a>
   <a href="https://github.com/abadima/simply-api">
-    <img src="https://img.shields.io/github/actions/workflow/status/Abadima/simply-api/codeql-analysis.yml?branch=main&style=for-the-badge" alt="Code Status">
+    <img src="https://img.shields.io/github/actions/workflow/status/Abadima/simply-api/codeql-analysis.yml?branch=V2&style=for-the-badge" alt="Code Status">
   </a>
 </div>
 
 ## <img alt="Download" width="28px" src="https://cdn.onlinewebfonts.com/svg/img_250767.png" /> Download Package
 ```
-npm install simply-api.js@legacy
+npm install simply-api.js@latest
 ```
 (or)
 ```
-yarn add simply-api.js@legacy
+yarn add simply-api.js@latest
 ```
 (or)
 ```
-pnpm add simply-api.js
+pnpm add simply-api.js@latest
 ```
 
 
@@ -35,36 +35,38 @@ pnpm add simply-api.js
 | nsfw(url) | Scan URLs for NSFW (PNG/JPG/GIF) |
 | tictactoe(uid, ai, board) | AI Game of Tic-Tac-Toe |
 | toxicity(text) | Detect Toxic messages |
+| get(string, boolean) | [Custom Get Request](https://simplyapi.js.org/docs) |
+| post(string, requestBody, boolean) | [Custom Post Request](https://simplyapi.js.org/docs) |
 
 
 ## <img alt="Download" width="22px" src="http://cdn.onlinewebfonts.com/svg/img_28937.png" /> Example Usages
 
 ### Chatbot
-```js
-const { chatbot } = require("simply-api");
+```ts
+import {chatbot} from "simply-api.js";
 
 let data = await chatbot("Test Run by Simply-API.js", { uid: 69 });
 console.log(data) // returns JSON result
 ```
 ### Grammar
-```js
-const { grammar } = require("simply-api");
+```ts
+import {grammar} from "simply-api.js";
 
 let data = await grammar("hello how r u");
 console.log(data) // returns JSON result
 ```
 ### NSFW
-```js
+```ts
 const URL = "https://i.pinimg.com/originals/ce/a7/21/cea7210bf2974d4085d09b53f782ea74.jpg";
-const { nsfw } = require("simply-api");
+import {nsfw} from "simply-api.js";
 
 let data = await nsfw(URL);
 console.log(data) // returns JSON result
 ```
 
 ### Tic-Tac-Toe
-```js
-const { tictactoe } = require("simply-api");
+```ts
+import {tictactoe} from "simply-api.js";
 const uid = 123, ai = "o";
 const board = [
 	" ", " ", " ",
@@ -77,19 +79,38 @@ console.log(data) // returns JSON result
 ```
 
 ### Toxicity
-```js
-const { toxicity } = require("simply-api");
+```ts
+import {toxicity} from "simply-api.js";
 const text = " *Insert offensive text here * ";
 
 let data = await toxicity(text);
 console.log(data) // returns JSON result
 ```
 
+### Custom Requests
+```ts
+import { get, post } from "simply-api.js";
+const bool = true; // Use Beta Version of API?
+
+const uid = 123, ai = "o";
+const array = [
+    " ", " ", " ",
+    " ", "x", " ",
+    " ", " ", " "
+];
+
+const board = JSON.stringify({"board": array});
+
+let getData = await get("/api/grammar?text=get gud", bool).catch(e => error);
+let postData = await post("/api/tictactoe?uid=123&ai=o", board, bool).catch(e => error);
+console.log(getData, postData)
+```
+
 ### Alternative Methods
-```js
+```ts
 const URL = "https://i.pinimg.com/originals/ce/a7/21/cea7210bf2974d4085d09b53f782ea74.jpg";
 const text = " *Insert offensive text here * ";
-var simplyapi = require("simply-api");
+import simplyapi from "simply-api.js";
 const uid = 123, ai = "o";
 const board = [
     " ", " ", " ",

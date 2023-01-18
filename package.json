@@ -1,6 +1,6 @@
 {
   "name": "simply-api.js",
-  "version": "1.2.0",
+  "version": "2.0.0",
   "description": "API Wrapper for simplyapi.js.org",
   "typings": "main.d.ts",
   "main": "main.js",
@@ -35,7 +35,10 @@
     "url": "https://github.com/Abadima/simply-api/issues"
   },
   "homepage": "https://simplyapi.js.org",
+  "devDependencies": {
+    "@types/node": "^18.8.3"
+  },
   "engines": {
-    "node": ">=16.16.0"
+    "node": ">=16.17.0"
   }
 }

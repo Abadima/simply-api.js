@@ -3,4 +3,6 @@ node_modules
 .gitignore
 .github
 .idea
+beta
 test
+src
