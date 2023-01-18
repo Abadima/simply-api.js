@@ -2,10 +2,10 @@ name: "Build"
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, V2 ]
   pull_request:
     # The branches below must be a subset of the branches above
-    branches: [ main ]
+    branches: [ main, V2 ]
   schedule:
     - cron: '30 7 * * 2'
 
