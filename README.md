@@ -8,7 +8,7 @@
     <img src="https://img.shields.io/discord/867999056172052551.svg?label=Support&logo=Discord&colorB=7289da&style=for-the-badge" alt="Support Server">
   </a>
   <a href="https://github.com/abadima/simply-api">
-    <img src="https://img.shields.io/github/actions/workflow/status/Abadima/simply-api/codeql-analysis.yml?branch=V2&style=for-the-badge" alt="Code Status">
+    <img src="https://img.shields.io/github/actions/workflow/status/Abadima/simply-api/codeql.yml?branch=V2&style=for-the-badge" alt="Code Status">
   </a>
 </div>
 
