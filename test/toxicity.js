@@ -1,13 +1,18 @@
-var { toxicity } = require("../main")
-var start = Date.now()
+import {toxicity} from "../main.js";
+
+const start = performance.now();
+
+const message = {
+    200: `TOXICITY => PASS`,
+    404: `TOXICITY => TEXT IS NULL`,
+    500: `TOXICITY => SERVER ERR`,
+    403: `TOXICITY => BAD RESPONSE`,
+    408: `TOXICITY => TIMED OUT`
+}
 
 toxicity("*insert offensiveness here*").then(data => {
-    switch (data?.status) {
-        case 200: console.log(`TOXICITY => PASS (${Date.now() - start}ms)`); break
-        case 404: console.log(`TOXICITY => TEXT IS NULL (${Date.now() - start}ms)`); break
-        case 500: console.log(`TOXICITY => SERVER ERR (${Date.now() - start}ms)`); break
-        case 403: console.log(`TOXICITY => BAD RESPONSE (${Date.now() - start}ms)`); break
-        case 408: console.log(`TOXICITY => TIMED OUT (${Date.now() - start}ms)`); break
-        default: console.log(`TOXICITY => FAIL (${Date.now() - start}ms)`); break
-    }
-})
+    const elapsed = Math.round(performance.now() - start);
+    if (message[data?.status]) return console.log(`${message[data?.status]} (${elapsed}ms)`);
+
+    console.log(`TOXICITY => FAIL (${elapsed}ms)`);
+});

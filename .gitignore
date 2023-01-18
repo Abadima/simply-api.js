@@ -1,3 +1,6 @@
-package-lock.json
+# Packages
+pnpm-lock.yaml
 node_modules
-tsRewrite
+
+# IDE Files
+.idea

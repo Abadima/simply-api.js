@@ -1,26 +1,33 @@
 {
   "name": "simply-api.js",
-  "version": "1.1.0",
-  "description": "Package for simplyapi.js.org",
-  "typings": "index.d.ts",
+  "version": "1.2.0",
+  "description": "API Wrapper for simplyapi.js.org",
+  "typings": "main.d.ts",
   "main": "main.js",
+  "type": "module",
   "scripts": {
-    "test": "node test/chatbot && node test/grammar && node test/nsfw && node test/toxicity",
-    "tsTest": "tsc tsRewrite/tsTest/chatbot && node tsRewrite/tsTest/chatbot.js",
-    "dev": "npm publish --tag dev"
+    "beta": "node beta/chatbot && node beta/grammar && node beta/nsfw && node beta/tictactoe && node beta/toxicity",
+    "dev": "uglifyjs main.js --comments all -o main.js && npm publish --tag dev",
+    "latest": "uglifyjs main.js --comments all -o main.js && npm publish --tag latest",
+    "legacy": "npm publish --tag legacy",
+    "test": "node test/chatbot && node test/grammar && node test/nsfw && node test/tictactoe && node test/toxicity"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Abadima/simply-api.git"
   },
   "keywords": [
+    "ai",
     "api",
     "chatbot",
     "grammar",
     "nsfw",
-    "simply",
+    "simple",
     "spelling",
-    "toxicity"
+    "tictactoe",
+    "tic tac toe",
+    "toxicity",
+    "wrapper"
   ],
   "author": "Abadima",
   "license": "MIT",
@@ -28,7 +35,7 @@
     "url": "https://github.com/Abadima/simply-api/issues"
   },
   "homepage": "https://simplyapi.js.org",
-  "dependencies": {
-    "@types/node": "^18.7.14"
+  "engines": {
+    "node": ">=16.16.0"
   }
 }

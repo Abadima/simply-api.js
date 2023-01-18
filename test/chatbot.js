@@ -1,13 +1,18 @@
-var { chatbot } = require("../main")
-var start = Date.now()
+import {chatbot} from "../main.js";
 
-chatbot("Test Run by Simply-API.js", { uid: 69 }).then(data => {
-    switch (data?.status) {
-        case 200: console.log(`CHATBOT => PASS (${Date.now() - start}ms)`); break
-        case 404: console.log(`CHATBOT => MSG IS NULL (${Date.now() - start}ms)`); break
-        case 500: console.log(`CHATBOT => SERVER ERR (${Date.now() - start}ms)`); break
-        case 403: console.log(`CHATBOT => BAD RESPONSE (${Date.now() - start}ms)`); break
-        case 408: console.log(`CHATBOT => TIMED OUT (${Date.now() - start}ms)`); break
-        default: console.log(`CHATBOT => FAIL (${Date.now() - start}ms)`); break
-    }
-})
+const start = performance.now();
+
+const message = {
+    200: `CHATBOT => PASS`,
+    404: `CHATBOT => MSG IS NULL`,
+    500: `CHATBOT => SERVER ERR`,
+    403: `CHATBOT => BAD RESPONSE`,
+    408: `CHATBOT => TIMED OUT`
+}
+
+chatbot("Test Run by Simply-API.js", {uid: 74675927457}).then(data => {
+    const elapsed = Math.round(performance.now() - start);
+    if (message[data?.status]) return console.log(`${message[data?.status]} (${elapsed}ms)`);
+
+    console.log(`CHATBOT => FAIL (${elapsed}ms)`);
+});

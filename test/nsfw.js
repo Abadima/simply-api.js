@@ -1,14 +1,19 @@
-var { nsfw } = require("../main")
-var uri = "https://i.pinimg.com/originals/ce/a7/21/cea7210bf2974d4085d09b53f782ea74.jpg"
-var start = Date.now()
+import {nsfw} from "../main.js";
+
+const uri = "https://i.pinimg.com/originals/ce/a7/21/cea7210bf2974d4085d09b53f782ea74.jpg"
+const start = performance.now();
+
+const message = {
+    200: `NSFW => PASS`,
+    404: `NSFW => IMAGE IS NULL`,
+    500: `NSFW => SERVER ERR`,
+    403: `NSFW => BAD RESPONSE`,
+    408: `NSFW => TIMED OUT`
+}
 
 nsfw(uri).then(data => {
-    switch (data?.status) {
-        case 200: console.log(`NSFW => PASS (${Date.now() - start}ms)`); break
-        case 404: console.log(`NSFW => IMAGE IS NULL (${Date.now() - start}ms)`); break
-        case 500: console.log(`NSFW => SERVER ERR (${Date.now() - start}ms)`); break
-        case 403: console.log(`NSFW => BAD RESPONSE (${Date.now() - start}ms)`); break
-        case 408: console.log(`NSFW => TIMED OUT (${Date.now() - start}ms)`); break
-        default: console.log(`NSFW => FAIL (${Date.now() - start}ms)`); break
-    }
-})
+    const elapsed = Math.round(performance.now() - start);
+    if (message[data?.status]) return console.log(`${message[data?.status]} (${elapsed}ms)`);
+
+    console.log(`NSFW => FAIL (${elapsed}ms)`);
+});

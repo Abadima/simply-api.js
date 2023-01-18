@@ -1,13 +1,20 @@
-var { grammar } = require("../main")
-var start = Date.now()
+// noinspection SpellCheckingInspection
+
+import {grammar} from "../main.js";
+
+const start = performance.now();
+
+const message = {
+    200: `GRAMMAR => PASS`,
+    404: `GRAMMAR => TEXT IS NULL`,
+    500: `GRAMMAR => SERVER ERR`,
+    403: `GRAMMAR => BAD RESPONSE`,
+    408: `GRAMMAR => TIMED OUT`
+}
 
 grammar("helo how r u").then(data => {
-    switch (data?.status) {
-        case 200: console.log(`GRAMMAR => PASS (${Date.now() - start}ms)`); break
-        case 404: console.log(`GRAMMAR => TEXT IS NULL (${Date.now() - start}ms)`); break
-        case 500: console.log(`GRAMMAR => SERVER ERR (${Date.now() - start}ms)`); break
-        case 403: console.log(`GRAMMAR => BAD RESPONSE (${Date.now() - start}ms)`); break
-        case 408: console.log(`GRAMMAR => TIMED OUT (${Date.now() - start}ms)`); break
-        default: console.log(`GRAMMAR => FAIL (${Date.now() - start}ms)`); break
-    }
-})
+    const elapsed = Math.round(performance.now() - start);
+    if (message[data?.status]) return console.log(`${message[data?.status]} (${elapsed}ms)`);
+
+    console.log(`GRAMMAR => FAIL (${elapsed}ms)`);
+});
