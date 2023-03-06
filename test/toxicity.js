@@ -1,4 +1,4 @@
-import {toxicity} from "../main.js";
+const {toxicity} = require("../main.js");
 
 const start = performance.now();
 

@@ -1,4 +1,4 @@
-import {tictactoe} from "../main.js";
+const {tictactoe} = require("../main.js");
 
 const start = performance.now();
 

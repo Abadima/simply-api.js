@@ -1,4 +1,4 @@
-import {nsfw} from "../main.js";
+const {nsfw} = require("../main.js");
 
 const uri = "https://i.pinimg.com/originals/ce/a7/21/cea7210bf2974d4085d09b53f782ea74.jpg"
 const start = performance.now();

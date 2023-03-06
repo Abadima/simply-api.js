@@ -1,12 +1,11 @@
 {
   "name": "simply-api.js",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "API Wrapper for simplyapi.js.org",
   "typings": "main.d.ts",
   "main": "main.js",
-  "type": "module",
   "scripts": {
-    "beta": "node beta/chatbot && node beta/grammar && node beta/nsfw && node beta/tictactoe && node beta/toxicity",
+    "beta": "node beta/chatbot.mjs && node beta/grammar.mjs && node beta/nsfw.mjs && node beta/tictactoe.mjs && node beta/toxicity.mjs",
     "dev": "uglifyjs main.js --comments all -o main.js && npm publish --tag dev",
     "latest": "uglifyjs main.js --comments all -o main.js && npm publish --tag latest",
     "legacy": "npm publish --tag legacy",
@@ -36,7 +35,7 @@
   },
   "homepage": "https://simplyapi.js.org",
   "devDependencies": {
-    "@types/node": "^18.8.3"
+    "@types/node": "^18.14.6"
   },
   "engines": {
     "node": ">=16.17.0"

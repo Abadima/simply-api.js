@@ -1,4 +1,4 @@
-import {chatbot} from "../main.js";
+const {chatbot} = require("../main.js")
 
 const start = performance.now();
 

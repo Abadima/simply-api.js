@@ -1,6 +1,5 @@
 // noinspection SpellCheckingInspection
-
-import {grammar} from "../main.js";
+const {grammar} = require("../main.js");
 
 const start = performance.now();
 
