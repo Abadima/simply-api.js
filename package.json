@@ -1,6 +1,6 @@
 {
   "name": "simply-api.js",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "API Wrapper for simplyapi.js.org",
   "typings": "main.d.ts",
   "main": "main.js",
