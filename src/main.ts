@@ -1,14 +1,10 @@
 import {request} from "https";
 
-const betaURI = "simplyapi.abadima.dev"
-const baseURI = 'simplyapi.js.org';
-const endURI = {
+const baseURI = "simplyapi.js.org", endURI = {
     chatbot: "/api/chatbot",
-    grammar: "/api/grammar",
-    nsfw: "/api/nsfw",
     tictactoe: "/api/tictactoe",
     toxicity: "/api/toxicity"
-}
+};
 
 interface cbOptions {
     bday?: string,
@@ -47,32 +43,6 @@ export function chatbot(text: string, options: cbOptions = {}): Promise<object> 
 }
 
 /**
- * Grammar Checker
- * @param {string} text
- * @returns {Promise<object>}
- */
-export function grammar(text = ""): Promise<object> {
-    const queryParams = new URLSearchParams();
-    queryParams.set("text", text);
-    const queryString = queryParams.toString();
-
-    return get(`${endURI.grammar}?${queryString}`)
-}
-
-/**
- * NSFW URL Detection
- * @param {string} url
- * @returns {Promise<object>}
- */
-export function nsfw(url: string): Promise<object> {
-    if (!/\.(jpg|png|gif)$/i.test(url)) {
-        return Promise.resolve({error: "No Image specified", status: 404});
-    }
-
-    return get(`${endURI.nsfw}?img=${encodeURIComponent(url)}`);
-}
-
-/**
  * TicTacToe Game
  * @param {number} uid
  * @param {"o" | "x"} ai
@@ -94,65 +64,61 @@ export function tictactoe(uid: number, ai: "o" | "x", array: boardOptions): Prom
  * @returns {Promise<object>}
  */
 export function toxicity(text: string): Promise<object> {
-    return get(`${endURI.toxicity}?text=${encodeURIComponent(text)}`)
+    return get(`${endURI.toxicity}?text=${encodeURIComponent(text)}`);
 }
 
 /**
  * @param {string} endpoint
- * @param {boolean=} beta
  * @returns {Promise<object>}
  */
-export function get(endpoint: string, beta?: boolean): Promise<object> {
+export function get(endpoint: string): Promise<object> {
     return new Promise((resolve, reject) => {
         request({
-            hostname: beta ? betaURI : baseURI,
+            hostname: baseURI,
             path: endpoint,
             method: "GET",
             headers: {"Content-Type": "application/json"}
         }, (response) => {
-            let data = '';
-            response.on('error', reject);
-            response.on('data', chunk => data += chunk);
-            response.on('end', () => {
+            let data = "";
+            response.on("error", reject);
+            response.on("data", chunk => data += chunk);
+            response.on("end", () => {
                 try {
-                    resolve(JSON.parse(data))
+                    resolve(JSON.parse(data));
                 } catch (e) {
-                    resolve({error: "Timed Out", status: 408})
+                    resolve({error: "Timed Out", status: 408});
                 }
             });
-        }).on('error', reject).end();
-    })
+        }).on("error", reject).end();
+    });
 }
 
 /**
  * @param {string} endpoint
  * @param {string} requestBody
- * @param {boolean=} beta
  * @returns {Promise<object>}
  */
-export function post(endpoint: string, requestBody: string, beta?: boolean): Promise<object> {
+export function post(endpoint: string, requestBody: string): Promise<object> {
     return new Promise((resolve, reject) => {
-        const hostname = beta ? betaURI : baseURI;
-
         const req = request({
-            hostname: hostname,
+            hostname: baseURI,
             path: endpoint,
             method: "POST",
             headers: {
-                'Content-Type': 'application/json',
+                "Content-Type": "application/json",
             },
         }, (response) => {
-            let data = '';
+            let data = "";
 
-            response.on('data', (chunk) => data += chunk);
-            response.on('end', () => {
+            response.on("data", (chunk) => data += chunk);
+            response.on("end", () => {
                 try {
-                    resolve(JSON.parse(data))
+                    resolve(JSON.parse(data));
                 } catch (e) {
-                    resolve({error: response?.statusMessage || "Timed out", status: response?.statusCode || 408})
+                    resolve({error: response?.statusMessage || "Timed out", status: response?.statusCode || 408});
                 }
             });
-        }).on('error', reject);
+        }).on("error", reject);
 
         req.write(requestBody);
         req.end();
@@ -162,10 +128,8 @@ export function post(endpoint: string, requestBody: string, beta?: boolean): Pro
 // noinspection JSUnusedGlobalSymbols
 export default {
     chatbot,
-    grammar,
-    nsfw,
     tictactoe,
     toxicity,
     get,
     post
-}
+};

@@ -1,15 +1,15 @@
 {
   "name": "simply-api.js",
-  "version": "2.0.2",
+  "version": "2.1.0",
   "description": "API Wrapper for simplyapi.js.org",
   "typings": "main.d.ts",
   "main": "main.js",
   "scripts": {
-    "beta": "node beta/chatbot.mjs && node beta/grammar.mjs && node beta/nsfw.mjs && node beta/tictactoe.mjs && node beta/toxicity.mjs",
-    "dev": "uglifyjs main.js --comments all -o main.js && npm publish --tag dev",
+    "dev": "eslint --fix main.js eslint --fix src uglifyjs main.js --comments all -o main.cjs && npm publish --tag dev",
     "latest": "uglifyjs main.js --comments all -o main.js && npm publish --tag latest",
-    "legacy": "npm publish --tag legacy",
-    "test": "node test/chatbot && node test/grammar && node test/nsfw && node test/tictactoe && node test/toxicity"
+    "legacy": "uglifyjs main.js --comments all -o main.js npm publish --tag legacy",
+    "test": "node test/chatbot.cjs && node test/tictactoe.cjs && node test/toxicity.cjs",
+    "clean": "uglifyjs main.js --comments all -o main.js"
   },
   "repository": {
     "type": "git",
@@ -35,7 +35,11 @@
   },
   "homepage": "https://simplyapi.js.org",
   "devDependencies": {
-    "@types/node": "^18.14.6"
+    "@types/node": "^20.4.2",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "eslint": "^8.45.0",
+    "uglify-js": "^3.17.4"
   },
   "engines": {
     "node": ">=16.17.0"

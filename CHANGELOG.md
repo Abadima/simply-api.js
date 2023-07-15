@@ -1,3 +1,11 @@
+## [2.1.0](https://github.com/Abadima/releases/tag/v2.1.0
+
+### API Removals
+
+* Remove `grammmar()` function
+* Remove `nsfw()` function
+* Remove `beta` choice (GET/POST)
+
 ## [2.0.0](https://github.com/Abadima/simply-api) (2023-01-18)
 
 
