@@ -1,4 +1,4 @@
-## [2.1.0](https://github.com/Abadima/releases/tag/v2.1.0
+## [2.1.0](https://github.com/Abadima/releases/tag/v2.1.0) (2023-07-15)
 
 ### API Removals
 
