@@ -9,13 +9,13 @@ interface cbOptions {
     year?: number;
 }
 declare type boardOptions = [
-        "x" | "o" | " ",
-        "x" | "o" | " ",
-        "x" | "o" | " ",
-        "x" | "o" | " ",
-        "x" | "o" | " ",
-        "x" | "o" | " ",
-        "x" | "o" | " ",
-        "x" | "o" | " ",
-        "x" | "o" | " "
+    "x" | "o" | " ",
+    "x" | "o" | " ",
+    "x" | "o" | " ",
+    "x" | "o" | " ",
+    "x" | "o" | " ",
+    "x" | "o" | " ",
+    "x" | "o" | " ",
+    "x" | "o" | " ",
+    "x" | "o" | " "
 ];
